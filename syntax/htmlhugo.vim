@@ -8,11 +8,12 @@ endif
 
 runtime! syntax/html.vim
 
-syn match hugoIdentifier /\<\(\.\)@1<=[A-Z][a-z]\+\>/ contained
+syn match hugoIdentifier /\.\@1<=[A-Z][a-z]\+/ contained nextgroup=hugoMethod
+syn match hugoMethod /\C\.\@1<=[a-z]\+/ contained
 syn match hugoVariable /\$[A-z0-9_]\+/ contained
 
 syn match hugoAssignment /:=/ contained
-syn cluster hugoAll add=hugoAssignment,hugoIdentifier
+syn cluster hugoAll add=hugoAssignment,hugoIdentifier,hugoMethod
 
 syn keyword hugoInclude partial template contained
 syn keyword hugoStatement with block define end contained
@@ -57,6 +58,7 @@ hi def link hugoOperator Operator
 hi def link hugoStatement Statement
 hi def link hugoInclude Include
 hi def link hugoFunction Function
+hi def link hugoMethod Function
 hi def link hugoComment Comment
 
 let b:current_syntax = "htmlhugo"

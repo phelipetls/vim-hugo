@@ -1,0 +1,62 @@
+if exists("b:current_syntax")
+  finish
+endif
+
+if !exists("main_syntax")
+  let main_syntax = 'html'
+endif
+
+runtime! syntax/html.vim
+
+syn match hugoIdentifier /\<\(\.\)@1<=[A-Z][a-z]\+\>/ contained
+syn match hugoVariable /\$[A-z0-9_]\+/ contained
+
+syn match hugoAssignment /:=/ contained
+syn cluster hugoAll add=hugoAssignment,hugoIdentifier
+
+syn keyword hugoInclude partial template contained
+syn keyword hugoStatement with block define end contained
+syn keyword hugoRepeat range contained
+syn keyword hugoConditional if else contained
+syn keyword hugoOperator and or contained
+syn cluster hugoAll add=hugoInclude,hugoStatement,hugoRepeat,hugoConditional,hugoOperator
+
+syn keyword hugoFunction .AddDate .Format .Get .GetPage .HasMenuCurrent .IsMenuCurrent .Param .Render .RenderString contained
+syn keyword hugoFunction .Scratch .Unix absLangURL absURL after anchorize append apply base64 chomp contained
+syn keyword hugoFunction complement cond countrunes countwords dateFormat default delimit dict echoParam emojify contained
+syn keyword hugoFunction eq errorf and warnf fileExists findRE first float ge getenv group gt contained
+syn keyword hugoFunction hasPrefix highlight hmac htmlEscape htmlUnescape hugo humanize i18n Image Functions in contained
+syn keyword hugoFunction index int intersect isset jsonify lang.Merge lang.NumFmt last le len contained
+syn keyword hugoFunction lower lt markdownify Math md5 merge ne now os.Stat partialCached contained
+syn keyword hugoFunction path.Base path.Dir path.Ext path.Join path.Split plainify pluralize print printf println contained
+syn keyword hugoFunction querify readDir readFile ref reflect.IsMap reflect.IsSlice relLangURL relref relURL contained
+syn keyword hugoFunction replace replaceRE safeCSS safeHTML safeHTMLAttr safeJS safeURL seq sha shuffle contained
+syn keyword hugoFunction singularize slice slicestr sort split string strings.HasSuffix strings.Repeat
+syn keyword hugoFunction strings.TrimPrefix strings.TrimRight strings.TrimSuffix substr strings.RuneCount strings.TrimLeft contained
+syn keyword hugoFunction symdiff templates.Exists time title transform.Unmarshal trim truncate union uniq upper urlize urls.Parse contained
+syn keyword hugoFunction where syntax keyword path reflect strings templates transform urls os langs contained
+syn cluster hugoAll add=hugoFunction
+
+syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained
+syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
+syn cluster hugoAll add=hugoNumber,hugoString
+
+syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
+
+syn region hugoComment start=+{{/\*+ end=+\*/}}+ skip=/\\\\/ keepend extend
+
+hi def link hugoDelimiters PreProc
+hi def link hugoString String
+hi def link hugoNumber Number
+hi def link hugoDollar Special
+hi def link hugoAssignment Special
+hi def link hugoIdentifier Identifier
+hi def link hugoConditional Conditional
+hi def link hugoRepeat Repeat
+hi def link hugoOperator Operator
+hi def link hugoStatement Statement
+hi def link hugoInclude Include
+hi def link hugoFunction Function
+hi def link hugoComment Comment
+
+let b:current_syntax = "htmlhugo"

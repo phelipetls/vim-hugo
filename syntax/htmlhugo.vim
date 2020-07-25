@@ -17,20 +17,18 @@ syn keyword hugoConditional if else contained
 syn keyword hugoOperator and or not contained
 syn cluster hugoAll add=hugoInclude,hugoStatement,hugoRepeat,hugoConditional,hugoOperator
 
-syn keyword hugoFunction .AddDate .Format .Get .GetPage .HasMenuCurrent .IsMenuCurrent .Param .Render .RenderString contained
-syn keyword hugoFunction .Scratch .Unix absLangURL absURL after anchorize append apply base64 chomp contained
+syn keyword hugoFunction absLangURL absURL after anchorize append apply base64 chomp contained
 syn keyword hugoFunction complement cond countrunes countwords dateFormat default delimit dict echoParam emojify contained
 syn keyword hugoFunction eq errorf and warnf fileExists findRE first float ge getenv group gt contained
-syn keyword hugoFunction hasPrefix highlight hmac htmlEscape htmlUnescape hugo humanize i18n Image Functions in contained
-syn keyword hugoFunction index int intersect isset jsonify lang.Merge lang.NumFmt last le len contained
-syn keyword hugoFunction lower lt markdownify Math md5 merge ne now os.Stat partialCached contained
-syn keyword hugoFunction path.Base path.Dir path.Ext path.Join path.Split plainify pluralize print printf println contained
-syn keyword hugoFunction querify readDir readFile ref reflect.IsMap reflect.IsSlice relLangURL relref relURL contained
+syn keyword hugoFunction hasPrefix highlight hmac htmlEscape htmlUnescape hugo humanize i18n Image in contained
+syn keyword hugoFunction index int intersect isset jsonify last le len contained
+syn keyword hugoFunction lower lt markdownify Math md5 merge ne now partialCached contained
+syn keyword hugoFunction plainify pluralize print printf println contained
+syn keyword hugoFunction querify readDir readFile ref relLangURL relref relURL contained
 syn keyword hugoFunction replace replaceRE safeCSS safeHTML safeHTMLAttr safeJS safeURL seq sha shuffle contained
-syn keyword hugoFunction singularize slice slicestr sort split string strings.HasSuffix strings.Repeat
-syn keyword hugoFunction strings.TrimPrefix strings.TrimRight strings.TrimSuffix substr strings.RuneCount strings.TrimLeft contained
-syn keyword hugoFunction symdiff templates.Exists time title transform.Unmarshal trim truncate union uniq upper urlize urls.Parse contained
-syn keyword hugoFunction where syntax keyword path reflect strings templates transform urls os langs contained
+syn keyword hugoFunction singularize slice slicestr sort split string strings.Repeat
+syn keyword hugoFunction substr site contained
+syn keyword hugoFunction symdiff time title trim truncate union uniq upper urlize where contained
 syn cluster hugoAll add=hugoFunction
 
 syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained

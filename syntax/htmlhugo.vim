@@ -31,6 +31,11 @@ syn keyword hugoFunction substr site contained
 syn keyword hugoFunction symdiff time title trim truncate union uniq upper urlize where contained
 syn cluster hugoAll add=hugoFunction
 
+syn match hugoAssignment /:=/ contained
+syn match hugoPipe /\|/ contained nextgroup=hugoFunction
+syn cluster hugoSpecialSymbols contains=hugoAssignment,hugoPipe
+syn cluster hugoAll add=hugoAssignment,hugoPipe
+
 syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained
 syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
 syn cluster hugoAll add=hugoNumber,hugoString
@@ -42,8 +47,7 @@ syn region hugoComment start=+{{/\*+ end=+\*/}}+ skip=/\\\\/ keepend extend
 hi def link hugoDelimiters PreProc
 hi def link hugoString String
 hi def link hugoNumber Number
-hi def link hugoDollar Special
-hi def link hugoAssignment Special
+hi def link hugoSpecialSymbols Special
 hi def link hugoIdentifier Identifier
 hi def link hugoConditional Conditional
 hi def link hugoRepeat Repeat
@@ -55,3 +59,5 @@ hi def link hugoMethod Function
 hi def link hugoComment Comment
 
 let b:current_syntax = "htmlhugo"
+
+" vim: nowrap

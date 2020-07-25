@@ -8,6 +8,7 @@ endif
 
 runtime! syntax/html.vim
 
+syn case match
 
 syn keyword hugoInclude partial template contained
 syn keyword hugoStatement with block define end contained

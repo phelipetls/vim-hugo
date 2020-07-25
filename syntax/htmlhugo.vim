@@ -14,7 +14,7 @@ syn keyword hugoInclude partial template contained
 syn keyword hugoStatement with block define end contained
 syn keyword hugoRepeat range contained
 syn keyword hugoConditional if else contained
-syn keyword hugoOperator and or contained
+syn keyword hugoOperator and or not contained
 syn cluster hugoAll add=hugoInclude,hugoStatement,hugoRepeat,hugoConditional,hugoOperator
 
 syn keyword hugoFunction .AddDate .Format .Get .GetPage .HasMenuCurrent .IsMenuCurrent .Param .Render .RenderString contained

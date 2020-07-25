@@ -41,10 +41,10 @@ syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
 syn cluster hugoAll add=hugoNumber,hugoString
 
 syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
-syn cluster htmlPreProc add=hugoBlock
+syn region hugoComment start=+{{/\*+ end=+\*/}}+ keepend extend
+syn cluster htmlPreProc add=hugoBlock,hugoComment
 
-syn region hugoComment start=+{{/\*+ end=+\*/}}+ skip=/\\\\/ keepend extend
-
+hi def link hugoComment Comment
 hi def link hugoDelimiters PreProc
 hi def link hugoString String
 hi def link hugoNumber Number
@@ -57,7 +57,6 @@ hi def link hugoStatement Statement
 hi def link hugoInclude Include
 hi def link hugoFunction Function
 hi def link hugoMethod Function
-hi def link hugoComment Comment
 
 let b:current_syntax = "htmlhugo"
 

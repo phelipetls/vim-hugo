@@ -27,7 +27,7 @@ syn keyword hugoFunction plainify pluralize print printf println contained
 syn keyword hugoFunction querify readDir readFile ref relLangURL relref relURL contained
 syn keyword hugoFunction replace replaceRE safeCSS safeHTML safeHTMLAttr safeJS safeURL seq sha shuffle contained
 syn keyword hugoFunction singularize slice slicestr sort split string strings.Repeat
-syn keyword hugoFunction substr site contained
+syn keyword hugoFunction substr site resources contained
 syn keyword hugoFunction symdiff time title trim truncate union uniq upper urlize where contained
 syn cluster hugoAll add=hugoFunction
 

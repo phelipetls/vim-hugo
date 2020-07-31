@@ -27,31 +27,31 @@ endif
 function! GetHugoIndent()
   " Get HTML indent
   if exists('*HtmlIndent')
-    let ind = HtmlIndent()
+    let l:ind = HtmlIndent()
   else
-    let ind = HtmlIndentGet(v:lnum)
+    let l:ind = HtmlIndentGet(v:lnum)
   endif
 
   " The value of a single shift-width
   if exists('*shiftwidth')
-    let sw = shiftwidth()
+    let l:sw = shiftwidth()
   else
-    let sw = &sw
+    let l:sw = &sw
   endif
 
   " If need to indent based on last line
-  let last_line = getline(v:lnum-1)
+  let l:last_line = getline(v:lnum-1)
   if last_line =~ '^\s*{{-\=\s*\%(if\|else\|range\|with\|define\|block\).*}}'
     if last_line !~ '{{-\= end -\=}}'
-      let ind += sw
+      let l:ind += l:sw
     endif
   endif
 
   " End of FuncMap block
-  let current_line = getline(v:lnum)
+  let l:current_line = getline(v:lnum)
   if current_line =~ '^\s*{{-\=\s*\%(else\|end\).*}}'
-    let ind -= sw
+    let l:ind -= l:sw
   endif
 
-  return ind
+  return l:ind
 endfunction

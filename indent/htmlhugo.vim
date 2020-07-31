@@ -42,7 +42,9 @@ function! GetHugoIndent()
   " If need to indent based on last line
   let last_line = getline(v:lnum-1)
   if last_line =~ '^\s*{{-\=\s*\%(if\|else\|range\|with\|define\|block\).*}}'
-    let ind += sw
+    if last_line !~ '{{-\= end -\=}}'
+      let ind += sw
+    endif
   endif
 
   " End of FuncMap block

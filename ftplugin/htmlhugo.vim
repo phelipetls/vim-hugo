@@ -4,6 +4,8 @@ endif
 
 runtime! ftplugin/html.vim
 
+set iskeyword+=$
+
 setlocal commentstring={{/*%s*/}}
 
 if exists("loaded_matchit")

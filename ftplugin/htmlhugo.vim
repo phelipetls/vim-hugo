@@ -4,7 +4,9 @@ endif
 
 runtime! ftplugin/html.vim
 
-set iskeyword+=$
+setlocal iskeyword+=$
+
+setlocal path+=layouts,resources,content,archetypes,static,data,layouts/_default,layouts/partials,..
 
 setlocal commentstring={{/*%s*/}}
 
@@ -15,4 +17,4 @@ if exists("loaded_matchit")
         \.'end }},'
 endif
 
-let b:undo_ftplugin = "setlocal com<"
+let b:undo_ftplugin = "setlocal com< path< isk<"

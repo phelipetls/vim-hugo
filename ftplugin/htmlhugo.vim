@@ -12,9 +12,10 @@ setlocal commentstring={{/*%s*/}}
 
 if exists("loaded_matchit")
   let b:match_words=b:match_words.","
+        \."{{-\?:-\?}},"
         \.'\(define\|with\|range\|if\):'
-        \.'else \(if .*\)\?}}:'
-        \.'end }},'
+        \.'else \(if .*\)\? -\?}}:'
+        \.'end -\?}},'
 endif
 
 let b:undo_ftplugin = "setlocal com< path< isk<"

@@ -20,3 +20,7 @@ for s:lang in map(copy(g:markdown_fenced_languages),'matchstr(v:val,"[^=]*$")')
         \.' contains=@markdownHighlight'.substitute(s:lang,'\.','','g')
 endfor
 unlet! s:langs
+
+unlet! b:current_syntax
+syntax include @Yaml syntax/yaml.vim
+syntax region yamlFrontmatter start=/\%^---$/ end=/^---$/ keepend contains=@Yaml

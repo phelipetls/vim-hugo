@@ -18,7 +18,7 @@ syn region hugoShortcodeHighlight
       \ contains=markdownCode
 
 " [js=javascript, python, r] -> [javascript, python, r]
-for s:lang in map(copy(g:markdown_fenced_languages),'matchstr(v:val,"[^=]*$")')
+for s:lang in map(copy(['html', 'python', 'bash=sh']),'matchstr(v:val,"[^=]*$")')
   exe 'syn region hugoShortcodeHighlight'.s:lang
         \.' matchgroup=markdownCodeDelimiter'
         \.' start="{{<\s*highlight\s*\<'.s:lang.'\>\s*>}}"'

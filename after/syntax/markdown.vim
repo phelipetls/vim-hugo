@@ -11,7 +11,7 @@ syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contain
 hi link hugoShortcodeString String
 
 syn region hugoShortcodeHighlight
-      \ matchgroup=markdownCodeDelimiter
+      \ matchgroup=hugoShortcode
       \ start='{{<\s*highlight.*>}}'
       \ end='{{<\s*\/highlight\s*>}}'
       \ keepend

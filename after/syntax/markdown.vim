@@ -1,10 +1,15 @@
-syn region hugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=PreProc nextgroup=hugoShortcodeName
-hi link hugoShortcode PreProc
+syn region hugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=PreProc
 
-syn match hugoShortcodeName /\({{[<%] \)\zs\f\+\s/ contained containedin=hugoShortcode
+syn match hugoShortcodeStartDelimiter /{{[<%]/ nextgroup=hugoShortcodeName skipwhite contained containedin=hugoShortcode
+hi link hugoShortcodeStartDelimiter Delimiter
+
+syn match hugoShortcodeEndDelimiter /[>%]}}/ contained containedin=hugoShortcode
+hi link hugoShortcodeEndDelimiter Delimiter
+
+syn match hugoShortcodeName /\k\+/ contained containedin=hugoShortcode
 hi link hugoShortcodeName Statement
 
-syn match hugoShortcodeArg /\({{[<%] \)\@4<!\k\+/ contained containedin=hugoShortcode
+syn match hugoShortcodeArg /\k\+\ze=\=/ contained containedin=hugoShortcode
 hi link hugoShortcodeArg Type
 
 syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contained containedin=hugoShortcode

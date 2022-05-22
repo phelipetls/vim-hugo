@@ -17,7 +17,7 @@ let b:html_indentexpr = &l:indentexpr
 runtime! indent/html.vim
 
 setlocal indentexpr=GetHugoIndent()
-setlocal indentkeys+==else,==end
+setlocal indentkeys+==else,=end
 
 " Only define the function once.
 if exists('*GetHugoIndent')

@@ -129,12 +129,14 @@ syn match hugoPipe /\|/ contained nextgroup=hugoFunction
 syn cluster hugoSpecialSymbols contains=hugoAssignment,hugoPipe
 syn cluster hugoAll add=hugoAssignment,hugoPipe
 
-syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained
-syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
-syn cluster hugoAll add=hugoNumber,hugoString
-
 syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
 syn cluster htmlPreProc add=hugoBlock
+
+syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained
+syn cluster hugoAll add=hugoNumber
+
+syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
+syn cluster hugoAll add=hugoString
 
 syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained
 syn cluster hugoAll add=hugoComment

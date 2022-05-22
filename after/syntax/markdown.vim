@@ -16,16 +16,16 @@ syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contain
 hi link hugoShortcodeString String
 
 syn region hugoShortcodeHighlight
-      \ start='{{[<%]\s\+highlight.*[>%]}}'ms=s-1
-      \ end='{{[<%]\s\+\/highlight\s\+[>%]}}'ms=s-1
+      \ start='^{{[<%]\s\+highlight.*[>%]}}'ms=s-1
+      \ end='^{{[<%]\s\+\/highlight\s\+[>%]}}'ms=s-1
       \ keepend
       \ contains=hugoShortcode,markdownCode
 
 " [js=javascript, python, r] -> [javascript, python, r]
 for s:lang in map(copy(get(g:,'markdown_fenced_languages',[])),'matchstr(v:val,"[^=]*$")')
   exe 'syn region hugoShortcodeHighlight'.s:lang
-        \.' start="{{[%<]\s\+highlight\s\+'.s:lang.'\s\+.*[>%]}}"ms=s-1'
-        \.' end="{{[<%]\s\+\/highlight\s\+[>%]}}"ms=s-1'
+        \.' start="^{{[%<]\s\+highlight\s\+'.s:lang.'\s\+.*[>%]}}"ms=s-1'
+        \.' end="^{{[<%]\s\+\/highlight\s\+[>%]}}"ms=s-1'
         \.' keepend'
         \.' contains=hugoShortcode,@markdownHighlight'.substitute(s:lang,'\.','','g')
 endfor

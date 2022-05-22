@@ -145,7 +145,7 @@ syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained
 syn cluster hugoAll add=hugoMethod
 
 hi def link hugoComment Comment
-hi def link hugoDelimiters PreProc
+hi def link hugoDelimiters Delimiter
 hi def link hugoString String
 hi def link hugoNumber Number
 hi def link hugoSpecialSymbols Special

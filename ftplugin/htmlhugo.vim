@@ -16,4 +16,4 @@ if exists('loaded_matchit')
         \.'end -\?}},'
 endif
 
-let b:undo_ftplugin = 'setlocal com< path< isk<'
+let b:undo_ftplugin = 'setlocal com< path<'

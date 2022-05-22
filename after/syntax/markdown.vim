@@ -21,7 +21,7 @@ syn region hugoShortcodeHighlight
 for s:lang in map(copy(get(g:,'markdown_fenced_languages',[])),'matchstr(v:val,"[^=]*$")')
   exe 'syn region hugoShortcodeHighlight'.s:lang
         \.' matchgroup=markdownCodeDelimiter'
-        \.' start="{{<\s*highlight\s*\<'.s:lang.'\>\s*>}}"'
+        \.' start="{{<\s*highlight\s\+'.s:lang.'\s*.*>}}"'
         \.' end="{{<\s*\/highlight\s*>}}"'
         \.' keepend'
         \.' contains=@markdownHighlight'.substitute(s:lang,'\.','','g')

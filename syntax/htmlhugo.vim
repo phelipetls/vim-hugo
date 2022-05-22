@@ -134,8 +134,10 @@ syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
 syn cluster hugoAll add=hugoNumber,hugoString
 
 syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
-syn region hugoComment start=+{{/\*+ end=+\*/}}+ keepend extend
-syn cluster htmlPreProc add=hugoBlock,hugoComment
+syn cluster htmlPreProc add=hugoBlock
+
+syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained
+syn cluster hugoAll add=hugoComment
 
 hi def link hugoComment Comment
 hi def link hugoDelimiters PreProc

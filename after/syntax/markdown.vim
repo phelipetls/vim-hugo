@@ -16,20 +16,18 @@ syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contain
 hi link hugoShortcodeString String
 
 syn region hugoShortcodeHighlight
-      \ matchgroup=Delimiter
-      \ start='{{[<%]\s\+highlight.*[>%]}}'
-      \ end='{{[<%]\s\+\/highlight\s\+[>%]}}'
+      \ start='{{[<%]\s\+highlight.*[>%]}}'ms=s-1
+      \ end='{{[<%]\s\+\/highlight\s\+[>%]}}'ms=s-1
       \ keepend
-      \ contains=markdownCode
+      \ contains=hugoShortcode,markdownCode
 
 " [js=javascript, python, r] -> [javascript, python, r]
 for s:lang in map(copy(get(g:,'markdown_fenced_languages',[])),'matchstr(v:val,"[^=]*$")')
   exe 'syn region hugoShortcodeHighlight'.s:lang
-        \.' matchgroup=Delimiter'
-        \.' start="{{[%<]\s\+highlight\s\+'.s:lang.'\s\+.*[>%]}}"'
-        \.' end="{{[<%]\s\+\/highlight\s\+[>%]}}"'
+        \.' start="{{[%<]\s\+highlight\s\+'.s:lang.'\s\+.*[>%]}}"ms=s-1'
+        \.' end="{{[<%]\s\+\/highlight\s\+[>%]}}"ms=s-1'
         \.' keepend'
-        \.' contains=@markdownHighlight'.substitute(s:lang,'\.','','g')
+        \.' contains=hugoShortcode,@markdownHighlight'.substitute(s:lang,'\.','','g')
 endfor
 
 hi link hugoShortcodeHighlight markdownCode

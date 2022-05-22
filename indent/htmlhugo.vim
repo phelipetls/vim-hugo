@@ -1,5 +1,5 @@
 " Only load this indent file when no other was loaded.
-if exists("b:did_indent")
+if exists('b:did_indent')
   finish
 endif
 
@@ -20,7 +20,7 @@ setlocal indentexpr=GetHugoIndent()
 setlocal indentkeys+==else,==end
 
 " Only define the function once.
-if exists("*GetHugoIndent")
+if exists('*GetHugoIndent')
   finish
 endif
 

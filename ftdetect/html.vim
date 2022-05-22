@@ -6,4 +6,7 @@ function! s:DetectGoTemplate()
   endif
 endfunction
 
-au BufNewFile,BufRead *.html call s:DetectGoTemplate()
+augroup DetectGoTemplate
+  autocmd!
+  autocmd BufNewFile,BufRead *.html call s:DetectGoTemplate()
+augroup END

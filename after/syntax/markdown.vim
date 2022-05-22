@@ -1,4 +1,4 @@
-syn region hugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=PreProc
+syn region hugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=Delimiter keepend
 
 syn match hugoShortcodeStartDelimiter /{{[<%]/ nextgroup=hugoShortcodeName skipwhite contained containedin=hugoShortcode
 hi link hugoShortcodeStartDelimiter Delimiter

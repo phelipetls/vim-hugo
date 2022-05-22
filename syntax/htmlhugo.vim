@@ -17,18 +17,111 @@ syn keyword hugoConditional if else contained
 syn keyword hugoOperator and or not contained
 syn cluster hugoAll add=hugoInclude,hugoStatement,hugoRepeat,hugoConditional,hugoOperator
 
-syn keyword hugoFunction absLangURL absURL after anchorize append apply base64 chomp contained
-syn keyword hugoFunction complement cond countrunes countwords dateFormat default delimit dict echoParam emojify contained
-syn keyword hugoFunction eq errorf and warnf fileExists findRE first float ge getenv group gt contained
-syn keyword hugoFunction hasPrefix highlight hmac htmlEscape htmlUnescape hugo humanize i18n Image in contained
-syn keyword hugoFunction index int intersect isset jsonify last le len contained
-syn keyword hugoFunction lower lt markdownify Math md5 merge ne now partialCached contained
-syn keyword hugoFunction plainify pluralize print printf println contained
-syn keyword hugoFunction querify readDir readFile ref relLangURL relref relURL contained
-syn keyword hugoFunction replace replaceRE safeCSS safeHTML safeHTMLAttr safeJS safeURL seq sha shuffle contained
-syn keyword hugoFunction singularize slice slicestr sort split string strings.Repeat
-syn keyword hugoFunction substr site resources contained
-syn keyword hugoFunction symdiff time title trim truncate union uniq upper urlize where contained
+let s:hugo_global_functions = [
+      \ 'absLangURL',
+      \ 'absURL',
+      \ 'after',
+      \ 'anchorize',
+      \ 'append',
+      \ 'apply',
+      \ 'base64',
+      \ 'chomp',
+      \ 'complement',
+      \ 'cond',
+      \ 'countrunes',
+      \ 'countwords',
+      \ 'default',
+      \ 'delimit',
+      \ 'dict',
+      \ 'echoParam',
+      \ 'emojify',
+      \ 'eq',
+      \ 'errorf',
+      \ 'warnf',
+      \ 'fileExists',
+      \ 'findRE',
+      \ 'first',
+      \ 'float',
+      \ 'ge',
+      \ 'getenv',
+      \ 'group',
+      \ 'gt',
+      \ 'hasPrefix',
+      \ 'highlight',
+      \ 'hmac',
+      \ 'htmlEscape',
+      \ 'htmlUnescape',
+      \ 'humanize',
+      \ 'i18n',
+      \ 'in',
+      \ 'index',
+      \ 'int',
+      \ 'intersect',
+      \ 'isset',
+      \ 'jsonify',
+      \ 'lang',
+      \ 'lang.Merge',
+      \ 'last',
+      \ 'le',
+      \ 'len',
+      \ 'lower',
+      \ 'lt',
+      \ 'markdownify',
+      \ 'md5',
+      \ 'merge',
+      \ 'ne',
+      \ 'now',
+      \ 'partialCached',
+      \ 'plainify',
+      \ 'pluralize',
+      \ 'print',
+      \ 'printf',
+      \ 'println',
+      \ 'querify',
+      \ 'range',
+      \ 'readDir',
+      \ 'readFile',
+      \ 'ref',
+      \ 'relLangURL',
+      \ 'relref',
+      \ 'relURL',
+      \ 'replace',
+      \ 'replaceRE',
+      \ 'safeCSS',
+      \ 'safeHTML',
+      \ 'safeHTMLAttr',
+      \ 'safeJS',
+      \ 'safeURL',
+      \ 'seq',
+      \ 'sha',
+      \ 'shuffle',
+      \ 'singularize',
+      \ 'site',
+      \ 'slice',
+      \ 'slicestr',
+      \ 'sort',
+      \ 'split',
+      \ 'string',
+      \ 'substr',
+      \ 'symdiff',
+      \ 'time',
+      \ 'title',
+      \ 'trim',
+      \ 'truncate',
+      \ 'union',
+      \ 'uniq',
+      \ 'upper',
+      \ 'urlize',
+      \ 'where',
+      \ 'minify',
+      \ 'fingerprint',
+      \ 'toCSS',
+      \ ]
+
+for s:hugo_global_function in s:hugo_global_functions
+  exe 'syn keyword hugoFunction '. s:hugo_global_function .' contained'
+endfor
+
 syn cluster hugoAll add=hugoFunction
 
 syn match hugoAssignment /:=/ contained

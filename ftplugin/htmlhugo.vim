@@ -4,7 +4,7 @@ endif
 
 runtime! ftplugin/html.vim
 
-setlocal path+=layouts,resources,content,archetypes,static,data,layouts/_default,layouts/partials,..
+setlocal path+=layouts,resources,content,archetypes,static,data,layouts/_default,layouts/partials
 
 setlocal commentstring={{/*%s*/}}
 

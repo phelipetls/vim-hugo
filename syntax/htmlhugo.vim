@@ -1,8 +1,8 @@
-if exists("b:current_syntax")
+if exists('b:current_syntax')
   finish
 endif
 
-if !exists("main_syntax")
+if !exists('main_syntax')
   let main_syntax = 'html'
 endif
 
@@ -58,6 +58,6 @@ hi def link hugoInclude Include
 hi def link hugoFunction Function
 hi def link hugoMethod Function
 
-let b:current_syntax = "htmlhugo"
+let b:current_syntax = 'htmlhugo'
 
 " vim: nowrap

@@ -10,12 +10,14 @@ runtime! syntax/html.vim
 
 syn case match
 
-syn keyword hugoInclude partial template contained
-syn keyword hugoStatement with block define end contained
-syn keyword hugoRepeat range contained
-syn keyword hugoConditional if else contained
-syn keyword hugoOperator and or not contained
-syn cluster hugoAll add=hugoInclude,hugoStatement,hugoRepeat,hugoConditional,hugoOperator
+syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/
+syn cluster htmlPreProc add=hugoBlock
+
+syn keyword hugoInclude partial template contained containedin=hugoBlock
+syn keyword hugoStatement with block define end contained containedin=hugoBlock
+syn keyword hugoRepeat range contained containedin=hugoBlock
+syn keyword hugoConditional if else contained containedin=hugoBlock
+syn keyword hugoOperator and or not contained containedin=hugoBlock
 
 let s:hugo_global_functions = [
       \ 'absLangURL',
@@ -119,39 +121,27 @@ let s:hugo_global_functions = [
       \ ]
 
 for s:hugo_global_function in s:hugo_global_functions
-  exe 'syn keyword hugoFunction '. s:hugo_global_function .' contained'
+  exe 'syn keyword hugoFunction '. s:hugo_global_function .' contained containedin=hugoBlock'
 endfor
 
-syn cluster hugoAll add=hugoFunction
+syn match hugoAssignment /:=/ contained containedin=hugoBlock
 
-syn match hugoAssignment /:=/ contained
-syn cluster hugoAll add=hugoAssignment
-syn cluster hugoSpecialSymbols contains=hugoAssignment
+syn match hugoPipe /\|/ contained containedin=hugoBlock
 
-syn match hugoPipe /\|/ contained nextgroup=hugoFunction
-syn cluster hugoSpecialSymbols contains=hugoPipe
-syn cluster hugoAll add=hugoPipe
+syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=hugoBlock
 
-syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
-syn cluster htmlPreProc add=hugoBlock
+syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained containedin=hugoBlock
 
-syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained
-syn cluster hugoAll add=hugoNumber
+syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=hugoBlock
 
-syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained
-syn cluster hugoAll add=hugoString
-
-syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained
-syn cluster hugoAll add=hugoComment
-
-syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained
-syn cluster hugoAll add=hugoMethod
+syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=hugoBlock
 
 hi def link hugoComment Comment
 hi def link hugoDelimiters Delimiter
 hi def link hugoString String
 hi def link hugoNumber Number
-hi def link hugoSpecialSymbols Special
+hi def link hugoPipe Special
+hi def link hugoAssignment Special
 hi def link hugoIdentifier Identifier
 hi def link hugoConditional Conditional
 hi def link hugoRepeat Repeat

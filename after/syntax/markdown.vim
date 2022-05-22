@@ -9,8 +9,8 @@ hi link hugoShortcodeEndDelimiter Delimiter
 syn match hugoShortcodeName /\k\+/ contained containedin=hugoShortcode
 hi link hugoShortcodeName Statement
 
-syn match hugoShortcodeArg /\k\+\ze=\=/ contained containedin=hugoShortcode
-hi link hugoShortcodeArg Type
+syn match hugoShortcodeParam /\k\+\ze=\=/ contained containedin=hugoShortcode
+hi link hugoShortcodeParam Type
 
 syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contained containedin=hugoShortcode
 hi link hugoShortcodeString String

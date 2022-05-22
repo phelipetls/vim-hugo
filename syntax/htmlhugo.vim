@@ -141,6 +141,9 @@ syn cluster hugoAll add=hugoString
 syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained
 syn cluster hugoAll add=hugoComment
 
+syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained
+syn cluster hugoAll add=hugoMethod
+
 hi def link hugoComment Comment
 hi def link hugoDelimiters PreProc
 hi def link hugoString String

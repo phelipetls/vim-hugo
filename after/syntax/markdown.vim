@@ -17,8 +17,8 @@ hi link hugoShortcodeString String
 
 syn region hugoShortcodeHighlight
       \ matchgroup=hugoShortcode
-      \ start='{{[<%]\s*highlight.*[>%]}}'
-      \ end='{{[<%]\s*\/highlight\s*[>%]}}'
+      \ start='{{[<%]\s\+highlight.*[>%]}}'
+      \ end='{{[<%]\s\+\/highlight\s\+[>%]}}'
       \ keepend
       \ contains=markdownCode
 

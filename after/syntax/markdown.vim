@@ -6,7 +6,7 @@ hi link hugoShortcodeStartDelimiter Delimiter
 syn match hugoShortcodeEndDelimiter /[>%]}}/ contained containedin=hugoShortcode
 hi link hugoShortcodeEndDelimiter Delimiter
 
-syn match hugoShortcodeName /\k\+/ contained containedin=hugoShortcode
+syn match hugoShortcodeName +/\=\k\++ contained containedin=hugoShortcode
 hi link hugoShortcodeName Statement
 
 syn match hugoShortcodeParam /\k\+\ze=\=/ contained containedin=hugoShortcode

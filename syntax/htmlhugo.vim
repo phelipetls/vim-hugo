@@ -125,9 +125,12 @@ endfor
 syn cluster hugoAll add=hugoFunction
 
 syn match hugoAssignment /:=/ contained
+syn cluster hugoAll add=hugoAssignment
+syn cluster hugoSpecialSymbols contains=hugoAssignment
+
 syn match hugoPipe /\|/ contained nextgroup=hugoFunction
-syn cluster hugoSpecialSymbols contains=hugoAssignment,hugoPipe
-syn cluster hugoAll add=hugoAssignment,hugoPipe
+syn cluster hugoSpecialSymbols contains=hugoPipe
+syn cluster hugoAll add=hugoPipe
 
 syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/ contains=@hugoAll
 syn cluster htmlPreProc add=hugoBlock

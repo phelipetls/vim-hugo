@@ -80,7 +80,6 @@ let s:hugo_global_functions = [
       \ 'printf',
       \ 'println',
       \ 'querify',
-      \ 'range',
       \ 'readDir',
       \ 'readFile',
       \ 'ref',

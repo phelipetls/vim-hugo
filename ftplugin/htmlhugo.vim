@@ -10,7 +10,6 @@ setlocal commentstring={{/*%s*/}}
 
 if exists('loaded_matchit')
   let b:match_words=b:match_words.','
-        \.'{{-\?:-\?}},'
         \.'\(define\|block\|with\|range\|if\):'
         \.'else \(if .*\)\? -\?}}:'
         \.'end -\?}},'

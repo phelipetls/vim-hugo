@@ -1,7 +1,7 @@
 function! s:DetectGoTemplate()
-  if search('{{ end }}')
+  if search('{{\s*end\s*}}')
     set ft=htmlhugo
-  elseif search('{{ *\.[A-Z]')
+  elseif search('{{\s*\.[A-Z]')
     set ft=htmlhugo
   endif
 endfunction

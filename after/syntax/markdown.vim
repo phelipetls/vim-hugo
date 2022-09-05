@@ -12,7 +12,7 @@ hi link hugoShortcodeName Statement
 syn match hugoShortcodeParam /\k\+\ze=\=/ contained containedin=hugoShortcode
 hi link hugoShortcodeParam Type
 
-syn region hugoShortcodeString start=/[`"]/ end=/[`"]/ matchgroup=String contained containedin=hugoShortcode
+syn region hugoShortcodeString start=/\z([`"]\)/ end=/\z1/ matchgroup=String contained containedin=hugoShortcode
 hi link hugoShortcodeString String
 
 syn region hugoShortcodeHighlight

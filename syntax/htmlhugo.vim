@@ -129,7 +129,8 @@ syn match hugoPipe /\|/ contained containedin=hugoBlock
 
 syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=hugoBlock
 
-syn region hugoString start=/\z(["`']\)/ end=/\z1/ contained containedin=hugoBlock
+syn region hugoString start=/\z(["`']\)/ end=/\z1/ skip=+\\\\\|\\\z1+ contained containedin=hugoBlock
+syn region hugoRawString start=/`/ end=/`/ contained containedin=hugoBlock
 
 syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=hugoBlock
 
@@ -138,6 +139,7 @@ syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=hugoBlock
 hi def link hugoComment Comment
 hi def link hugoDelimiters Delimiter
 hi def link hugoString String
+hi def link hugoRawString String
 hi def link hugoNumber Number
 hi def link hugoPipe Special
 hi def link hugoAssignment Special

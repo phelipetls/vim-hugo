@@ -11,13 +11,13 @@ runtime! syntax/html.vim
 syn case match
 
 syn region htmlHugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/
-syn cluster htmlPreProc add=hugoBlock
+syn cluster htmlPreProc add=htmlHugoBlock
 
-syn keyword htmlHugoInclude partial template contained containedin=hugoBlock
-syn keyword htmlHugoStatement with block define end contained containedin=hugoBlock
-syn keyword htmlHugoRepeat range contained containedin=hugoBlock
-syn keyword htmlHugoConditional if else contained containedin=hugoBlock
-syn keyword htmlHugoOperator and or not contained containedin=hugoBlock
+syn keyword htmlHugoInclude partial template contained containedin=htmlHugoBlock
+syn keyword htmlHugoStatement with block define end contained containedin=htmlHugoBlock
+syn keyword htmlHugoRepeat range contained containedin=htmlHugoBlock
+syn keyword htmlHugoConditional if else contained containedin=htmlHugoBlock
+syn keyword htmlHugoOperator and or not contained containedin=htmlHugoBlock
 
 let s:hugo_global_functions = [
       \ 'absLangURL',
@@ -120,21 +120,21 @@ let s:hugo_global_functions = [
       \ ]
 
 for s:hugo_global_function in s:hugo_global_functions
-  exe 'syn keyword htmlHugoFunction '. s:hugo_global_function .' contained containedin=hugoBlock'
+  exe 'syn keyword htmlHugoFunction '. s:hugo_global_function .' contained containedin=htmlHugoBlock'
 endfor
 
-syn match htmlHugoAssignment /:=/ contained containedin=hugoBlock
+syn match htmlHugoAssignment /:=/ contained containedin=htmlHugoBlock
 
-syn match htmlHugoPipe /\|/ contained containedin=hugoBlock
+syn match htmlHugoPipe /\|/ contained containedin=htmlHugoBlock
 
-syn match htmlHugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=hugoBlock
+syn match htmlHugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=htmlHugoBlock
 
-syn region htmlHugoString start=/\z(["`']\)/ end=/\z1/ skip=+\\\\\|\\\z1+ contained containedin=hugoBlock
-syn region htmlHugoRawString start=/`/ end=/`/ contained containedin=hugoBlock
+syn region htmlHugoString start=/\z(["`']\)/ end=/\z1/ skip=+\\\\\|\\\z1+ contained containedin=htmlHugoBlock
+syn region htmlHugoRawString start=/`/ end=/`/ contained containedin=htmlHugoBlock
 
-syn region htmlHugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=hugoBlock
+syn region htmlHugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=htmlHugoBlock
 
-syn match htmlHugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=hugoBlock
+syn match htmlHugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=htmlHugoBlock
 
 hi def link htmlHugoComment Comment
 hi def link htmlHugoDelimiters Delimiter

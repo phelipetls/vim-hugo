@@ -10,14 +10,14 @@ runtime! syntax/html.vim
 
 syn case match
 
-syn region hugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/
+syn region htmlHugoBlock matchgroup=hugoDelimiters start=/{{-\?/ end=/-\?}}/
 syn cluster htmlPreProc add=hugoBlock
 
-syn keyword hugoInclude partial template contained containedin=hugoBlock
-syn keyword hugoStatement with block define end contained containedin=hugoBlock
-syn keyword hugoRepeat range contained containedin=hugoBlock
-syn keyword hugoConditional if else contained containedin=hugoBlock
-syn keyword hugoOperator and or not contained containedin=hugoBlock
+syn keyword htmlHugoInclude partial template contained containedin=hugoBlock
+syn keyword htmlHugoStatement with block define end contained containedin=hugoBlock
+syn keyword htmlHugoRepeat range contained containedin=hugoBlock
+syn keyword htmlHugoConditional if else contained containedin=hugoBlock
+syn keyword htmlHugoOperator and or not contained containedin=hugoBlock
 
 let s:hugo_global_functions = [
       \ 'absLangURL',
@@ -120,37 +120,37 @@ let s:hugo_global_functions = [
       \ ]
 
 for s:hugo_global_function in s:hugo_global_functions
-  exe 'syn keyword hugoFunction '. s:hugo_global_function .' contained containedin=hugoBlock'
+  exe 'syn keyword htmlHugoFunction '. s:hugo_global_function .' contained containedin=hugoBlock'
 endfor
 
-syn match hugoAssignment /:=/ contained containedin=hugoBlock
+syn match htmlHugoAssignment /:=/ contained containedin=hugoBlock
 
-syn match hugoPipe /\|/ contained containedin=hugoBlock
+syn match htmlHugoPipe /\|/ contained containedin=hugoBlock
 
-syn match hugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=hugoBlock
+syn match htmlHugoNumber /\<\d\+\([Ee]\d\+\)\?\>/ contained containedin=hugoBlock
 
-syn region hugoString start=/\z(["`']\)/ end=/\z1/ skip=+\\\\\|\\\z1+ contained containedin=hugoBlock
-syn region hugoRawString start=/`/ end=/`/ contained containedin=hugoBlock
+syn region htmlHugoString start=/\z(["`']\)/ end=/\z1/ skip=+\\\\\|\\\z1+ contained containedin=hugoBlock
+syn region htmlHugoRawString start=/`/ end=/`/ contained containedin=hugoBlock
 
-syn region hugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=hugoBlock
+syn region htmlHugoComment start=+/\*+ end=+\*/+ matchgroup=Comment keepend extend contained containedin=hugoBlock
 
-syn match hugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=hugoBlock
+syn match htmlHugoMethod /\.[A-Z]\k\+/hs=s+1 contained containedin=hugoBlock
 
-hi def link hugoComment Comment
-hi def link hugoDelimiters Delimiter
-hi def link hugoString String
-hi def link hugoRawString String
-hi def link hugoNumber Number
-hi def link hugoPipe Special
-hi def link hugoAssignment Special
-hi def link hugoIdentifier Identifier
-hi def link hugoConditional Conditional
-hi def link hugoRepeat Repeat
-hi def link hugoOperator Operator
-hi def link hugoStatement Statement
-hi def link hugoInclude Include
-hi def link hugoFunction Function
-hi def link hugoMethod Function
+hi def link htmlHugoComment Comment
+hi def link htmlHugoDelimiters Delimiter
+hi def link htmlHugoString String
+hi def link htmlHugoRawString String
+hi def link htmlHugoNumber Number
+hi def link htmlHugoPipe Special
+hi def link htmlHugoAssignment Special
+hi def link htmlHugoIdentifier Identifier
+hi def link htmlHugoConditional Conditional
+hi def link htmlHugoRepeat Repeat
+hi def link htmlHugoOperator Operator
+hi def link htmlHugoStatement Statement
+hi def link htmlHugoInclude Include
+hi def link htmlHugoFunction Function
+hi def link htmlHugoMethod Function
 
 let b:current_syntax = 'htmlhugo'
 

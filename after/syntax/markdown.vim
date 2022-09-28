@@ -1,36 +1,36 @@
-syn region hugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=Delimiter keepend
+syn region markdownHugoShortcode start=/{{[<%]/ end=/[>%]}}/ matchgroup=Delimiter keepend
 
-syn match hugoShortcodeStartDelimiter /{{[<%]/ nextgroup=hugoShortcodeName skipwhite contained containedin=hugoShortcode
-hi link hugoShortcodeStartDelimiter Delimiter
+syn match markdownHugoShortcodeStartDelimiter /{{[<%]/ nextgroup=markdownHugoShortcodeName skipwhite contained containedin=markdownHugoShortcode
+hi link markdownHugoShortcodeStartDelimiter Delimiter
 
-syn match hugoShortcodeEndDelimiter /[>%]}}/ contained containedin=hugoShortcode
-hi link hugoShortcodeEndDelimiter Delimiter
+syn match markdownHugoShortcodeEndDelimiter /[>%]}}/ contained containedin=markdownHugoShortcode
+hi link markdownHugoShortcodeEndDelimiter Delimiter
 
-syn match hugoShortcodeName +/\=\k\++ contained containedin=hugoShortcode
-hi link hugoShortcodeName Statement
+syn match markdownHugoShortcodeName +/\=\k\++ contained containedin=markdownHugoShortcode
+hi link markdownHugoShortcodeName Statement
 
-syn match hugoShortcodeParam /\k\+\ze=\=/ contained containedin=hugoShortcode
-hi link hugoShortcodeParam Type
+syn match markdownHugoShortcodeParam /\k\+\ze=\=/ contained containedin=markdownHugoShortcode
+hi link markdownHugoShortcodeParam Type
 
-syn region hugoShortcodeString start=/\z([`"]\)/ end=/\z1/ matchgroup=String contained containedin=hugoShortcode
-hi link hugoShortcodeString String
+syn region markdownHugoShortcodeString start=/\z([`"]\)/ end=/\z1/ matchgroup=String contained containedin=markdownHugoShortcode
+hi link markdownHugoShortcodeString String
 
-syn region hugoShortcodeHighlight
+syn region markdownHugoShortcodeHighlight
       \ start='^{{[<%]\s\+highlight.*[>%]}}'ms=s-1
       \ end='^{{[<%]\s\+\/highlight\s\+[>%]}}'ms=s-1
       \ keepend
-      \ contains=hugoShortcode,markdownCode
+      \ contains=markdownHugoShortcode,markdownCode
 
 " [js=javascript, python, r] -> [javascript, python, r]
 for s:lang in map(copy(get(g:,'markdown_fenced_languages',[])),'matchstr(v:val,"[^=]*$")')
-  exe 'syn region hugoShortcodeHighlight'.s:lang
+  exe 'syn region markdownHugoShortcodeHighlight'.s:lang
         \.' start="^{{[%<]\s\+highlight\s\+'.s:lang.'\s\+.*[>%]}}"ms=s-1'
         \.' end="^{{[<%]\s\+\/highlight\s\+[>%]}}"ms=s-1'
         \.' keepend'
-        \.' contains=hugoShortcode,@markdownHighlight'.substitute(s:lang,'\.','','g')
+        \.' contains=markdownHugoShortcode,@markdownHighlight'.substitute(s:lang,'\.','','g')
 endfor
 
-hi link hugoShortcodeHighlight markdownCode
+hi link markdownHugoShortcodeHighlight markdownCode
 
 unlet! b:current_syntax
 syntax include @Yaml syntax/yaml.vim
